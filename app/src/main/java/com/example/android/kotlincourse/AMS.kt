@@ -3,21 +3,17 @@ package com.example.android.kotlincourse
 import java.util.*
 
 fun main(args: Array<String>){
-    dayOfWeek()
+    println("Your fortune is: " + getFortuneCookies())
 }
 
-fun dayOfWeek() {
-    println("What day is it today?")
-    var intDay = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
-    var stringDay = "initial day"
-    when (intDay) {
-        1 -> stringDay = "Sunday"
-        2 -> stringDay = "Monday"
-        3 -> stringDay = "Tuesday"
-        4 -> stringDay = "Wednesday"
-        5 -> stringDay = "Thursday"
-        6 -> stringDay = "Friday"
-        7 -> stringDay = "Saturday"
-    }
-    println("Today is the $stringDay")
+fun getFortuneCookies(): String {
+    val fortune = listOf("You will have a great day!", "Things will go well for you today.",
+        "Enjoy a wonderful day of success.", "Be humble and all will turn out well.",
+        "Today is a good day for exercising restraint.", "Take it easy and enjoy life!",
+        "Treasure your friends because they are your greatest fortune.")
+    print("Enter your birthday: ")
+    var birthday = readLine()?.toIntOrNull() ?:1
+    birthday = birthday.div(7)
+    return fortune[birthday]
+
 }
