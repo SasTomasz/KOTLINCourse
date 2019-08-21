@@ -1,19 +1,21 @@
 package com.example.android.kotlincourse
 
 import java.util.*
+import kotlin.collections.ArrayList
 
 fun main(args: Array<String>){
-    println("Your fortune is: " + getFortuneCookies())
+
 }
 
-fun getFortuneCookies(): String {
-    val fortune = listOf("You will have a great day!", "Things will go well for you today.",
-        "Enjoy a wonderful day of success.", "Be humble and all will turn out well.",
-        "Today is a good day for exercising restraint.", "Take it easy and enjoy life!",
-        "Treasure your friends because they are your greatest fortune.")
-    print("Enter your birthday: ")
-    var birthday = readLine()?.toIntOrNull() ?:1
-    birthday = birthday.div(7)
-    return fortune[birthday]
+/**
+ * @param tankSize is size of tank in gallons
+ * @param currentFish is a list of Ints representing the length of each fish currently in the tank
+ * @param fishSize is the length of the new fish we want to add to the tank
+ * @param hasDecoration true if the the tank has decorations, false if not
+ */
+fun canAddFish(tankSize : Int, currentFish : List<Int>, fishSize : Int = 2, hasDecoration : Boolean = true) {
+    for (i, value in currentFish.withIndex()){
+
+    }
 
 }
