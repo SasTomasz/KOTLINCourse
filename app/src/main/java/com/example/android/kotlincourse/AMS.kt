@@ -1,11 +1,11 @@
 package com.example.android.kotlincourse
 
 fun main(args: Array<String>){
-    whatShouldIDoToday("sad")
-    whatShouldIDoToday("happy", temperature = 30)
-    whatShouldIDoToday("good")
-    whatShouldIDoToday("sad", weather = "windy")
-    whatShouldIDoToday("good", weather = "calm", temperature = 19)
+    whatShouldIDoToday(getMood())
+    whatShouldIDoToday(getMood(), temperature = 30)
+    whatShouldIDoToday(getMood())
+    whatShouldIDoToday(getMood(), weather = "windy")
+    whatShouldIDoToday(getMood(), weather = "calm", temperature = 19)
 }
 
 fun whatShouldIDoToday (mood : String, weather : String = "Sunny", temperature : Int = 24) {
@@ -26,6 +26,9 @@ fun isCalmWeather(weather: String) = weather == "calm"
 fun isWarm(temperature: Int) = temperature >= 20
 fun isCold(temperature: Int) = temperature < 20
 fun getMood(): String{
-    val mood: String = "Happy"
-    readLine(mood)
+    val mood: String
+    print("What is Your mood: ")
+    mood = readLine()!!
+    return mood
 }
+
