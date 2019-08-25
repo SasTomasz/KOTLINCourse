@@ -1,7 +1,13 @@
 package com.example.android.kotlincourse.spices
 
+import android.graphics.Color
+
 fun main() {
-    delegate()
+    val labelsTest = listOf(SpiceContainer(Curry("green curry", "hot")),
+        SpiceContainer(Curry("red curry", "mild")),
+        SpiceContainer(Curry("yellow curry", "mild"))
+    )
+    for (i in labelsTest) println(i.label)
 }
 
 fun delegate() {
@@ -53,5 +59,10 @@ object YellowSpiceColor : SpiceColor {
         get() = "yellow"
 
 }
+
+ data class SpiceContainer(val spice: Spice){
+    val label = spice.name
+}
+
 
 
