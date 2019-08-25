@@ -1,6 +1,16 @@
 package com.example.android.kotlincourse.spices
 
-class Spice(val name: String, val spiciness: String = "mild") {
+fun main() {
+    delegate()
+}
+
+fun delegate() {
+    val curry = Curry()
+    println(curry.color)
+}
+
+abstract class Spice(val name: String, val spiciness: String = "mild",
+                     color: SpiceColor): SpiceColor by color {
     private val heat: Int
         get() {
             return when (spiciness) {
@@ -15,13 +25,33 @@ class Spice(val name: String, val spiciness: String = "mild") {
         println("$name is $spiciness that means it have spiciness of $heat")
     }
 
-    val listOfSpices = listOf(Spice("chili", "hot"),
-        Spice("chabanero", "extra hot"), Spice("salt", "mild"))
-
-    val spice = Spice("jalapeno", "extra hot")
-
-    val listOfSpicy = listOfSpices.filter { it.heat > 1 }
-
-
-    fun makeSalt() = Spice("salt", "mild")
+    abstract fun prepareSpice()
 }
+
+class Curry(
+    name: String = "curry", spiciness: String = "mild", color: SpiceColor = YellowSpiceColor
+) : Spice(name, spiciness, color), Grinder {
+
+    override fun grind() {
+    }
+
+    override fun prepareSpice() {
+        grind()
+    }
+}
+
+interface Grinder {
+    fun grind()
+}
+
+interface SpiceColor {
+    val color: String
+}
+
+object YellowSpiceColor : SpiceColor {
+    override val color: String
+        get() = "yellow"
+
+}
+
+
