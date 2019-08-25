@@ -1,13 +1,7 @@
 package com.example.android.kotlincourse.spices
 
-import android.graphics.Color
-
 fun main() {
-    val labelsTest = listOf(SpiceContainer(Curry("green curry", "hot")),
-        SpiceContainer(Curry("red curry", "mild")),
-        SpiceContainer(Curry("yellow curry", "mild"))
-    )
-    for (i in labelsTest) println(i.label)
+    delegate()
 }
 
 fun delegate() {
@@ -15,7 +9,7 @@ fun delegate() {
     println(curry.color)
 }
 
-abstract class Spice(val name: String, val spiciness: String = "mild",
+sealed class Spice(val name: String, val spiciness: String = "mild",
                      color: SpiceColor): SpiceColor by color {
     private val heat: Int
         get() {
@@ -51,18 +45,23 @@ interface Grinder {
 }
 
 interface SpiceColor {
-    val color: String
+    val color: Color
 }
 
 object YellowSpiceColor : SpiceColor {
-    override val color: String
-        get() = "yellow"
+    override val color: Color
+        get() = Color.YELLOW
 
 }
 
  data class SpiceContainer(val spice: Spice){
     val label = spice.name
 }
+
+enum class Color(val rgb: Int) {
+    RED(0xFF0000), GREEN(0x00FF00), BLUE(0x0000FF), YELLOW(0xFFFF00);
+}
+
 
 
 
